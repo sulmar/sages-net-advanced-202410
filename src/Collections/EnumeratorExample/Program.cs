@@ -4,6 +4,36 @@ using System.Collections.ObjectModel;
 
 Console.WriteLine("Hello, Enumerator!");
 
+CircualList<int> cicrualList = new CircualList<int>();
+cicrualList.Add(1);
+cicrualList.Add(2);
+cicrualList.Add(3);
+cicrualList.Add(4);
+cicrualList.Add(5);
+
+foreach (int item in cicrualList)
+{
+    Console.WriteLine(item);
+    Thread.Sleep(1000);
+}
+
+
+
+ISensor sensor = new TemperatureSensor();
+
+foreach (var temperature in sensor.GetValues())
+{
+    Console.WriteLine(temperature);
+
+    if (temperature > 90)
+    {
+        break;
+    }
+
+    Thread.Sleep(1000);
+}
+
+return;
 
 IEnumerable<string> weekDays = Helper.GetWeekDays();
 
