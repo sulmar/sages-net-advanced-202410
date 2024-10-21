@@ -1,4 +1,6 @@
-﻿namespace ListExample;
+﻿using Collections.Core;
+
+namespace ListExample;
 
 internal class ShoppingCart
 {
@@ -29,6 +31,12 @@ internal class ShoppingCart
     public decimal CalculateTotal()
     {
         return _items.Select(item => item.Price * item.Quantity).Sum();
+    }
+
+    public override string ToString()
+    {
+        _items.Dump();
+
     }
 }
 

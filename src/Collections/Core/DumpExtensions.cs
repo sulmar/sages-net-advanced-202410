@@ -1,4 +1,6 @@
-﻿namespace Collections.Core;
+﻿using System.Text;
+
+namespace Collections.Core;
 
 public static class DumpExtensions
 {
@@ -10,5 +12,18 @@ public static class DumpExtensions
         {
             Console.WriteLine(element);
         }
+    }
+
+    public static string Dump<T>(this IEnumerable<T> elements, string message = "")
+    {
+     
+        StringBuilder stringBuilder = new StringBuilder();
+
+        foreach (var element in elements)
+        {
+            stringBuilder.AppendLine(element.ToString());
+        }
+
+        return stringBuilder.ToString();
     }
 }

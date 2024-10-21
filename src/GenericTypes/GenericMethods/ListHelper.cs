@@ -8,19 +8,27 @@ namespace GenericMethods;
 
 internal class ListHelper
 {
-    public static void Dump(IEnumerable<int> collection)
+    // Szablon metody (Metoda generyczna)
+    public static void Dump<T>(IEnumerable<T> collection)
     {
-        foreach (var item in collection)
+        foreach (T item in collection)
         {
-            Console.WriteLine(item);
+            Console.WriteLine(item.ToString());
         }
     }
 
-    public static void Dump(IEnumerable<string> collection)
+    // string output = "a" + "b" + "c"
+
+    public static string DumpToString<T>(IEnumerable<T> elements, string message = "")
     {
-        foreach (var item in collection)
+        StringBuilder stringBuilder = new StringBuilder();
+
+        foreach (var element in elements)
         {
-            Console.WriteLine(item);
+            stringBuilder.AppendLine(element.ToString());
         }
+
+        return stringBuilder.ToString();
     }
+
 }
