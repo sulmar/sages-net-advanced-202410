@@ -7,3 +7,8 @@ Customer customer = new Corporation { Id = 1, Name = "Microsoft", MarketIndex = 
 Console.WriteLine(customer);
 
 
+
+
+
+
+
