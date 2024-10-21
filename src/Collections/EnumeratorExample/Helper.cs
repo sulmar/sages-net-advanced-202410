@@ -30,7 +30,3 @@ internal class Helper
     }   
 }
 
-public interface ISensor
-{
-    IEnumerable<float> GetValues();
-}
