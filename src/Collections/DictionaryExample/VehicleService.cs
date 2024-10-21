@@ -1,20 +1,16 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DictionaryExample;
+﻿namespace DictionaryExample;
 
 internal class VehicleService
 {
+    private Dictionary<string, Vehicle> _vehicles = new Dictionary<string, Vehicle>();
+
     public void Add(Vehicle vehicle)
     {
-        throw new NotImplementedException();
+        _vehicles.Add(vehicle.PlateNumber, vehicle);
     }
 
     public Vehicle GetByPlateNumber(string plateNumber)
     {
-        throw new NotImplementedException();
+        return _vehicles[plateNumber];
     }
 }
