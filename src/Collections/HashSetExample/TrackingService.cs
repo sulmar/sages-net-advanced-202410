@@ -2,14 +2,16 @@
 
 internal class TrackingService
 {
+    private HashSet<string> uniqueIPs = new HashSet<string>();
+
     public void TrackIP(string ipAddress)
     {
-        throw new NotImplementedException();
+       uniqueIPs.Add(ipAddress);
     }
 
     public IEnumerable<string> GetUniqueIPs()
     {
-        throw new NotImplementedException();
+        return uniqueIPs;
     }
 
 
