@@ -1,36 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ListExample;
+﻿namespace ListExample;
 
 internal class ShoppingCart
 {
+    private List<CartItem> _items = Enumerable.Empty<CartItem>().ToList();
+
     public void AddItem(CartItem item)
     {
-        throw new NotImplementedException();
+        _items.Add(item);
     }
 
     public void RemoveItem(string productName)
     {
-        throw new NotImplementedException();
+        CartItem cartItem = _items.FirstOrDefault(x => x.ProductName == productName);
+
+        _items.Remove(cartItem);
     }
 
-    public IEnumerable<CartItem> GetItems() 
-    { 
-        throw new NotImplementedException(); 
+    public IEnumerable<CartItem> GetItems()
+    {
+        return _items;
     }
 
     public void Clear()
     {
-        throw new NotImplementedException();
+        _items.Clear();
     }
 
     public decimal CalculateTotal()
-    { 
-        throw new NotImplementedException();
+    {
+        return _items.Select(item => item.Price * item.Quantity).Sum();
     }
 }
 
