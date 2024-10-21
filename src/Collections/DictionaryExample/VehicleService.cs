@@ -2,7 +2,7 @@
 
 internal class VehicleService
 {
-    private Dictionary<string, Vehicle> _vehicles = new Dictionary<string, Vehicle>();
+    private IDictionary<string, Vehicle> _vehicles = new Dictionary<string, Vehicle>();
 
     public void Add(Vehicle vehicle)
     {
