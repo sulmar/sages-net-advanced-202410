@@ -1,7 +1,9 @@
-﻿Console.WriteLine("Hello, Extension Methods!");
+﻿using ConsoleApp1;
+
+Console.WriteLine("Hello, Extension Methods!");
 
 
-if (DateTime.Today.DayOfWeek == DayOfWeek.Saturday || DateTime.Today.DayOfWeek == DayOfWeek.Sunday)
+if (DateTimeHelper.IsHoliday(DateTime.Today))
 {
     Console.WriteLine("Już weekend!");
 }
