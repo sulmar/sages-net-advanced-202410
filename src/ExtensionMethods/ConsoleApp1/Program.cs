@@ -3,7 +3,7 @@
 Console.WriteLine("Hello, Extension Methods!");
 
 
-if (DateTimeHelper.IsHoliday(DateTime.Today))
+if (DateTime.Today.IsHoliday())
 {
     Console.WriteLine("Już weekend!");
 }
@@ -11,3 +11,10 @@ else
 {
     Console.WriteLine("Dzień roboczy.");
 }
+
+
+int x = 10;
+
+Console.WriteLine(x.ToBoldMarkdown("##"));
+
+

@@ -35,7 +35,7 @@ internal class ShoppingCart
 
     public override string ToString()
     {
-        _items.Dump();
+        return _items.DumpToString();
 
     }
 }

@@ -14,9 +14,8 @@ public static class DumpExtensions
         }
     }
 
-    public static string Dump<T>(this IEnumerable<T> elements, string message = "")
-    {
-     
+    public static string DumpToString<T>(this IEnumerable<T> elements, string message = "")
+    {     
         StringBuilder stringBuilder = new StringBuilder();
 
         foreach (var element in elements)
