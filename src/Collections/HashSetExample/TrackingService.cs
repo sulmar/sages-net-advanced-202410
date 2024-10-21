@@ -10,9 +10,8 @@ internal class TrackingService
     }
 
     public IEnumerable<string> GetUniqueIPs()
-    {
+    {        
         return uniqueIPs;
     }
-
-
 }
+
