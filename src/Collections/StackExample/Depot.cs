@@ -32,7 +32,12 @@ internal class Depot
 
     public string SendItem(string place)
     {
-        throw new NotImplementedException();
+        var stack = _places[place];
+
+        var item = stack.Pop();
+
+        return item;
+
     }
 
     public void DisplayDepotContents()

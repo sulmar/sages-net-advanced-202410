@@ -4,6 +4,8 @@ Console.WriteLine("Hello, Stack!");
 
 DepotTest();
 
+ArticleTest();
+
 static void DepotTest()
 {
     Depot depot = new Depot();
@@ -25,11 +27,27 @@ static void DepotTest()
 
 static void ArticleTest()
 {
+    IArticleCaretaker articleCaretaker = new StackArticleCaretaker();
+
     var article = new Article { Title = "Lorem ipsum" };
 
     article.Content = "a";
+    articleCaretaker.SetState(article.CreateMemento());
+
     article.Content = "b";
+    articleCaretaker.SetState(article.CreateMemento());
+
     article.Content = "c";
+    articleCaretaker.SetState(article.CreateMemento());
 
     // TODO: Undo
+    article.SetMemento(articleCaretaker.GetState());
+    Console.WriteLine(article);
+
+    article.SetMemento(articleCaretaker.GetState());
+    Console.WriteLine(article);
+
+    article.SetMemento(articleCaretaker.GetState());
+    Console.WriteLine(article);
+
 }
