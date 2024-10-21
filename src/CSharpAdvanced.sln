@@ -87,6 +87,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TasksExample", "Asynchronou
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AsyncAwaitExample", "AsynchronousProgramming\AsyncAwaitExample\AsyncAwaitExample.csproj", "{72890450-B623-4BE2-81C0-71CD07F514D1}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Linq", "Linq", "{575741E7-F866-4F13-84D5-5BD3830A28B3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SetOperations", "Linq\SetOperations\SetOperations.csproj", "{DF5D7FA0-9E82-41F4-98D8-F80EB57B7079}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -221,6 +225,10 @@ Global
 		{72890450-B623-4BE2-81C0-71CD07F514D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72890450-B623-4BE2-81C0-71CD07F514D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72890450-B623-4BE2-81C0-71CD07F514D1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DF5D7FA0-9E82-41F4-98D8-F80EB57B7079}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DF5D7FA0-9E82-41F4-98D8-F80EB57B7079}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DF5D7FA0-9E82-41F4-98D8-F80EB57B7079}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DF5D7FA0-9E82-41F4-98D8-F80EB57B7079}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -258,6 +266,7 @@ Global
 		{C5C67FD4-2D9C-49D9-B025-E19B576AE3AB} = {E3844A4A-A013-4A54-9FB3-F13B2B126DD0}
 		{07F378E5-9E18-428A-98DC-C53011085CCE} = {E3844A4A-A013-4A54-9FB3-F13B2B126DD0}
 		{72890450-B623-4BE2-81C0-71CD07F514D1} = {E3844A4A-A013-4A54-9FB3-F13B2B126DD0}
+		{DF5D7FA0-9E82-41F4-98D8-F80EB57B7079} = {575741E7-F866-4F13-84D5-5BD3830A28B3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D2E7DE6E-B21A-4995-A942-00FB34E40D6F}
