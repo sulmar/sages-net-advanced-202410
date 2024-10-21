@@ -8,17 +8,29 @@ namespace EnumeratorExample;
 
 internal class Helper
 {
+    // Lazy Collection (leniwa kolekcja)
     public static IEnumerable<string> GetWeekDays()
     {
-        return new List<string>
-        {
-            "Poniedziałek",
-            "Wtorek",
-            "Środa",
-            "Czwartek",
-            "Piątek",
-            "Sobota",
-            "Niedziela"
-        };
+        yield return "Poniedziałek";
+        yield return "Wtorek";
+        yield return "Środa";
+        yield return "Czwartek";
+        yield return "Piątek";
+        yield return "Sobota";
+        yield return "Niedziela";
     }
+
+    public static IEnumerable<int> Infinity()
+    {
+        while (true)
+        {
+            Thread.Sleep(1000);
+            yield return 10;
+        }
+    }   
+}
+
+public interface ISensor
+{
+    IEnumerable<float> GetValues();
 }
