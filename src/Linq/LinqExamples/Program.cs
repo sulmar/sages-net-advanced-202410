@@ -12,7 +12,7 @@ allProducts.Dump("All products");
 
 // SQL: SELECT * FROM dbo.products WHERE color = 'red'
 
-string selectedColor = "red";
+string? selectedColor = "red";
 
 List<Product> filteredProducts = allProducts
     .Where(product => product.Color == selectedColor)
@@ -54,6 +54,25 @@ var groupedProducts = allProducts
     .GroupBy(product => product.Category)
     .Select( group => new { Category = group.Key, Count = group.Count() })
     .ToList();
+
+
+List<Product> filteredByColorAndPriceProducts = allProducts
+    .Where(product => product.Color == selectedColor || product.IsDiscounted)
+    .Where(product => product.Price > 100)
+    .ToList();
+
+
+IQueryable<Product> query2 = allProducts.AsQueryable();
+
+decimal? selectedPrice = 100;
+
+if (selectedColor != null)
+    query2 = query2.Where(product => product.Color == selectedColor);
+
+if (selectedPrice.HasValue)
+    query2 = query2.Where(product => product.Price > selectedPrice);
+
+var results = query2.ToList();
 
 
 Console.WriteLine();
