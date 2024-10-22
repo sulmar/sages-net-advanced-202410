@@ -15,8 +15,6 @@ PrintCalculator calculator = new PrintCalculator();
 
 printer.Printed += OnPrinted;
 
-printer.Printed.Invoke(100);
-
 printer.CalculateCost += (copies) => calculator.CalculateDiscountedCost(copies, 0.2m);
 
 if (options.Console)
@@ -51,7 +49,7 @@ static void LogToDb(string message)
 {
     Console.WriteLine($"save to db: {message}");
 }
-static void OnPrinted(byte copies)
+static void OnPrinted(object sender, PrintedEventArgs args)
 {
-    Console.WriteLine($"Printed {copies} copies.");
+    Console.WriteLine($"Printed {args.Copies} copies.");
 }

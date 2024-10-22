@@ -24,8 +24,8 @@ public class Printer
     public delegate decimal CalculateCostDelegate(int copies);
     public CalculateCostDelegate CalculateCost;
 
-    public delegate void PrintedDelegate(byte copies);
-    public PrintedDelegate Printed;
+    public delegate void PrintedDelegate(object sender, PrintedEventArgs args);
+    public event PrintedDelegate Printed;
 
     public void Print(string content, byte copies = 1)
     {
@@ -47,7 +47,7 @@ public class Printer
         }
 
         // TODO: Send printed signal 
-        Printed?.Invoke(copies);        
+        Printed?.Invoke(this, new PrintedEventArgs(copies));        
     }
 
 
@@ -57,5 +57,15 @@ public class Printer
     private void DisplayLCD(decimal cost)
     {
         Console.WriteLine($"LCD: {cost}");
+    }
+}
+
+public class PrintedEventArgs : EventArgs
+{
+    public int Copies { get; }
+
+    public PrintedEventArgs(int copies)
+    {
+        Copies = copies;
     }
 }
