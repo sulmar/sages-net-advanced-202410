@@ -6,14 +6,27 @@ string[] categories = ["Computer", "Books", "Food"];
 
 ProductFaker faker = new ProductFaker(categories);
 
-var products = faker.Generate(100);
+var allProducts = faker.Generate(100);
 
-foreach (var product in products)
-{
-    Console.WriteLine(product);
-}
+allProducts.Dump("All products");
 
 // TODO: Get products by color
+
+string selectedColor = "red";
+
+List<Product> filteredProducts = [];
+
+foreach (Product product in allProducts)
+{
+    if (product.Color == selectedColor)
+    {
+        filteredProducts.Add(product);
+    }
+}
+
+filteredProducts.Dump("Filtered products");
+
+
 
 // TODO: Sort products by price
 
