@@ -8,8 +8,7 @@ Console.WriteLine("Hello, Method Chaining!");
 // Fluent Api
 FluentPhone
     .Hangup()
-    .From("555-000-111")
-    .From("555-999-999")
+    .From("555-000-111")    
     .To("555-111-222")
     .To("555-111-333")
     .To("555-111-444")
