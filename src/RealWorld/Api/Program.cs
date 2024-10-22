@@ -12,11 +12,9 @@ var app = builder.Build();
 
 app.UseHttpsRedirection();
 
+var getCustomers = (ICustomerRepository repository) => Results.Ok(repository.GetAll());
 
-app.MapGet("/api/customers", (ICustomerRepository repository) =>
-{
-    return Results.Ok(repository.GetAll());
-});
+app.MapGet("/api/customers", (ICustomerRepository repository) => getCustomers);
 
 app.Run();
 
