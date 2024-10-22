@@ -22,10 +22,14 @@ printer.PowerOff = () => Console.WriteLine("Drukarka została wyłączona");
 if (options.Console)
     printer.Log += Console.WriteLine;
 
+var logToFile = (string msg) => File.AppendAllText("log.txt", msg + Environment.NewLine);
+
+logToFile("Hello Lambda");
+
 if (options.File)
 {
     // Metoda anonimowa zdefiniowana za pomocą wyrażenia lambda
-    printer.Log += msg => File.AppendAllText("log.txt", msg + Environment.NewLine);
+    printer.Log += logToFile;
 
     printer.Log += _ => File.AppendAllText("log.txt", "Test drukarki" + Environment.NewLine);
 }
