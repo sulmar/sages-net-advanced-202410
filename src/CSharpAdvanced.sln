@@ -95,6 +95,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "AnonymousMethods", "Anonymo
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Delegates", "AnonymousMethods\Delegates\Delegates.csproj", "{FD13D9FC-D232-40D9-8547-916CD8EB5D9B}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LinqExamples", "Linq\LinqExamples\LinqExamples.csproj", "{49289994-61F4-4905-ABD8-7D8C438488C3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -237,6 +239,10 @@ Global
 		{FD13D9FC-D232-40D9-8547-916CD8EB5D9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{FD13D9FC-D232-40D9-8547-916CD8EB5D9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{FD13D9FC-D232-40D9-8547-916CD8EB5D9B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{49289994-61F4-4905-ABD8-7D8C438488C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{49289994-61F4-4905-ABD8-7D8C438488C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{49289994-61F4-4905-ABD8-7D8C438488C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{49289994-61F4-4905-ABD8-7D8C438488C3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -276,6 +282,7 @@ Global
 		{DF5D7FA0-9E82-41F4-98D8-F80EB57B7079} = {575741E7-F866-4F13-84D5-5BD3830A28B3}
 		{589BD9AA-C498-49BB-9DC9-9F6888B063F8} = {77740BB7-64AF-4DA8-A4A0-5942554FBF96}
 		{FD13D9FC-D232-40D9-8547-916CD8EB5D9B} = {47AA7BD2-C5AB-4212-AC34-A97A9EE81A00}
+		{49289994-61F4-4905-ABD8-7D8C438488C3} = {575741E7-F866-4F13-84D5-5BD3830A28B3}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D2E7DE6E-B21A-4995-A942-00FB34E40D6F}
