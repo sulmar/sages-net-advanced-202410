@@ -15,17 +15,12 @@ public class LogOptions
 public class Printer
 {
 
-    // Definicja nagłówka metody (tylko sygnatura metody)
-    public delegate void LogDelegate(string message);
-
     // Zmienna, która przechowuje referencję do metod(y)
-    public LogDelegate Log;
+    public Action<string> Log;
 
-    public delegate decimal CalculateCostDelegate(int copies);
-    public CalculateCostDelegate CalculateCost;
+    public Func<int, decimal> CalculateCost;
 
-    public delegate void PrintedDelegate(object sender, PrintedEventArgs args);
-    public event PrintedDelegate Printed;
+    public event EventHandler<PrintedEventArgs> Printed;
 
     public void Print(string content, byte copies = 1)
     {
