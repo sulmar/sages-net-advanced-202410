@@ -10,27 +10,41 @@ var allProducts = faker.Generate(100);
 
 allProducts.Dump("All products");
 
-// TODO: Get products by color
+// SQL: SELECT * FROM dbo.products WHERE color = 'red'
 
 string selectedColor = "red";
 
-List<Product> filteredProducts = [];
-
-foreach (Product product in allProducts)
-{
-    if (product.Color == selectedColor)
-    {
-        filteredProducts.Add(product);
-    }
-}
+List<Product> filteredProducts = allProducts
+    .Where(product => product.Color == selectedColor)
+    .ToList();
 
 filteredProducts.Dump("Filtered products");
 
+var sortedFilteredProducts = allProducts
+    .Where(product => product.Color == selectedColor)
+    .OrderBy(product => product.Price)
+    .ToList();
 
+sortedFilteredProducts.Dump("Sorted filtered products by price");
 
-// TODO: Sort products by price
+// TODO: How many products is catalog by color?
 
-// TODO: How many products is catalog?
+var count = allProducts
+    .Where(product => product.Color == selectedColor)
+    .Count();
+
+Console.WriteLine(count);
+
+// SQL: SELECT Name, Price FROM dbo.products WHERE color = 'red'
+
+var query = allProducts
+    .Select(product => new { product.Name, product.Price })
+    .ToList();
+
+foreach (var product in query)
+{
+    Console.WriteLine($"Name: {product.Name} Price: {product.Price}");
+}
 
 // TODO: How many products is catalog by Category?
 
