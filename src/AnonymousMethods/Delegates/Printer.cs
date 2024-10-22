@@ -22,6 +22,8 @@ public class Printer
 
     public event EventHandler<PrintedEventArgs> Printed;
 
+    public Predicate<string> CanPrint;
+
     public void Print(string content, byte copies = 1)
     {
         for (int copy = 0; copy < copies; copy++)

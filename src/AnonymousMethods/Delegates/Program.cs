@@ -18,10 +18,16 @@ printer.Printed += OnPrinted;
 printer.CalculateCost += (copies) => calculator.CalculateDiscountedCost(copies, 0.2m);
 
 if (options.Console)
-    printer.Log += LogToConsole;
+    printer.Log += Console.WriteLine;
 
 if (options.File)
-    printer.Log += LogToFile;
+{
+    // Metoda anonimowa
+    printer.Log += delegate (string message)
+    {
+        File.AppendAllText("log.txt", message + Environment.NewLine);
+    };
+}
 
 if (options.Db)
     printer.Log += LogToDb;
@@ -34,16 +40,6 @@ printer.Print("Hello World!", 3);
 
 printer.Log = null;
 printer.Print("Hello .NET!", 1);
-
-static void LogToFile(string message)
-{
-    File.AppendAllText("log.txt", message + Environment.NewLine);
-}
-
-static void LogToConsole(string message)
-{
-    Console.WriteLine(message);
-}
 
 static void LogToDb(string message)
 {
