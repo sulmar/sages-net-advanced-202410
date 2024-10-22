@@ -1,4 +1,6 @@
-﻿namespace Delegates;
+﻿using System.Reflection;
+
+namespace Delegates;
 
 public class LogOptions
 {
@@ -19,11 +21,16 @@ public class Printer
     // Zmienna, która przechowuje referencję do metod(y)
     public LogDelegate Log;
 
+    public delegate decimal CalculateCostDelegate(int copies);
+    public CalculateCostDelegate CalculateCost;
+
+    public delegate void PrintedDelegate(byte copies);
+    public PrintedDelegate Printed;
+
     public void Print(string content, byte copies = 1)
     {
         for (int copy = 0; copy < copies; copy++)
         {
-            // TODO: Log to Console and/or to LogFile
             string message = $"{DateTime.Now} Printing {content} copy #{copy}";
 
             //if (Log != null)
@@ -32,8 +39,7 @@ public class Printer
             Log?.Invoke(message);
         }
 
-        // TODO: Calculate cost with 10% discount
-        decimal? cost = CalculateCost(copies, 0.99M);
+        decimal? cost = CalculateCost?.Invoke(copies);
 
         if (cost.HasValue)
         {
@@ -41,15 +47,12 @@ public class Printer
         }
 
         // TODO: Send printed signal 
-        Console.WriteLine($"Printed {copies} copies.");
+        Printed?.Invoke(copies);        
     }
 
 
 
-    private decimal CalculateCost(int copies, decimal cost)
-    {
-        return copies * cost;
-    }
+    
 
     private void DisplayLCD(decimal cost)
     {

@@ -7,10 +7,17 @@ LogOptions options = new LogOptions()
 {
     Console = true,
     File = true,
-    Db = true,   
+    Db = true,
 };
 
 Printer printer = new Printer();
+PrintCalculator calculator = new PrintCalculator();
+
+printer.Printed += OnPrinted;
+
+printer.Printed.Invoke(100);
+
+printer.CalculateCost += (copies) => calculator.CalculateDiscountedCost(copies, 0.2m);
 
 if (options.Console)
     printer.Log += LogToConsole;
@@ -44,4 +51,7 @@ static void LogToDb(string message)
 {
     Console.WriteLine($"save to db: {message}");
 }
-
+static void OnPrinted(byte copies)
+{
+    Console.WriteLine($"Printed {copies} copies.");
+}
