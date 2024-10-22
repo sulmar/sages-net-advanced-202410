@@ -7,7 +7,10 @@ public class Printer
         for (int copy = 0; copy < copies; copy++)
         {
             // TODO: Log to Console and/or to LogFile
-            Console.WriteLine($"{DateTime.Now} Printing {content} copy #{copy}");
+            string message = $"{DateTime.Now} Printing {content} copy #{copy}";
+
+            LogToConsole(message);
+            LogToFile(message);
         }
 
         // TODO: Calculate cost with 10% discount
@@ -20,6 +23,16 @@ public class Printer
 
         // TODO: Send printed signal 
         Console.WriteLine($"Printed {copies} copies.");
+    }
+
+    private static void LogToFile(string message)
+    {
+        File.AppendAllText("log.txt", message);
+    }
+
+    private static void LogToConsole(string message)
+    {
+        Console.WriteLine(message);
     }
 
     private decimal CalculateCost(int copies, decimal cost)
