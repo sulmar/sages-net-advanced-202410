@@ -2,9 +2,16 @@
 
 Console.WriteLine("Hello, Linq!");
 
-var products = new List<Product>();
+string[] categories = ["Computer", "Books", "Food"];
 
-IProductRepository repository = new ProductRepository(products);
+ProductFaker faker = new ProductFaker(categories);
+
+var products = faker.Generate(100);
+
+foreach (var product in products)
+{
+    Console.WriteLine(product);
+}
 
 // TODO: Get products by color
 
