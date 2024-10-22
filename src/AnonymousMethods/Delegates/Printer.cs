@@ -24,6 +24,9 @@ public class Printer
 
     public Predicate<string> CanPrint;
 
+    public delegate void PowerOffDelegate();
+    public PowerOffDelegate PowerOff;
+
     public void Print(string content, byte copies = 1)
     {
         for (int copy = 0; copy < copies; copy++)
@@ -44,7 +47,10 @@ public class Printer
         }
 
         // TODO: Send printed signal 
-        Printed?.Invoke(this, new PrintedEventArgs(copies));        
+        Printed?.Invoke(this, new PrintedEventArgs(copies));
+
+
+        PowerOff?.Invoke();
     }
 
 

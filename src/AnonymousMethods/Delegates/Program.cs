@@ -17,16 +17,17 @@ printer.Printed += OnPrinted;
 
 printer.CalculateCost += (copies) => calculator.CalculateDiscountedCost(copies, 0.2m);
 
+printer.PowerOff = () => Console.WriteLine("Drukarka została wyłączona");
+
 if (options.Console)
     printer.Log += Console.WriteLine;
 
 if (options.File)
 {
-    // Metoda anonimowa
-    printer.Log += delegate (string message)
-    {
-        File.AppendAllText("log.txt", message + Environment.NewLine);
-    };
+    // Metoda anonimowa zdefiniowana za pomocą wyrażenia lambda
+    printer.Log += msg => File.AppendAllText("log.txt", msg + Environment.NewLine);
+
+    printer.Log += _ => File.AppendAllText("log.txt", "Test drukarki" + Environment.NewLine);
 }
 
 if (options.Db)
@@ -41,9 +42,9 @@ printer.Print("Hello World!", 3);
 printer.Log = null;
 printer.Print("Hello .NET!", 1);
 
-static void LogToDb(string message)
+static void LogToDb(string msg)
 {
-    Console.WriteLine($"save to db: {message}");
+    Console.WriteLine($"save to db: {msg}");
 }
 static void OnPrinted(object sender, PrintedEventArgs args)
 {
