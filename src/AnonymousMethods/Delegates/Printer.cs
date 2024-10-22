@@ -1,7 +1,24 @@
 ﻿namespace Delegates;
 
+public class LogOptions
+{
+    public bool File { get; set; }
+    public bool Console { get; set; }
+    public bool Db { get; set; }
+}
+
+
+// *f(int)
+
 public class Printer
 {
+
+    // Definicja nagłówka metody (tylko sygnatura metody)
+    public delegate void LogDelegate(string message);
+
+    // Zmienna, która przechowuje referencję do metod(y)
+    public LogDelegate Log;
+
     public void Print(string content, byte copies = 1)
     {
         for (int copy = 0; copy < copies; copy++)
@@ -9,8 +26,10 @@ public class Printer
             // TODO: Log to Console and/or to LogFile
             string message = $"{DateTime.Now} Printing {content} copy #{copy}";
 
-            LogToConsole(message);
-            LogToFile(message);
+            //if (Log != null)
+            //    Log.Invoke(message);
+
+            Log?.Invoke(message);
         }
 
         // TODO: Calculate cost with 10% discount
@@ -25,15 +44,7 @@ public class Printer
         Console.WriteLine($"Printed {copies} copies.");
     }
 
-    private static void LogToFile(string message)
-    {
-        File.AppendAllText("log.txt", message);
-    }
 
-    private static void LogToConsole(string message)
-    {
-        Console.WriteLine(message);
-    }
 
     private decimal CalculateCost(int copies, decimal cost)
     {
