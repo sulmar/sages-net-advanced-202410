@@ -48,4 +48,14 @@ foreach (var product in query)
 
 // TODO: How many products is catalog by Category?
 
+// SQL: SELECT Category, COUNT(*) FROM Products GROUP BY Category
+
+var groupedProducts = allProducts
+    .GroupBy(product => product.Category)
+    .Select( group => new { Category = group.Key, Count = group.Count() })
+    .ToList();
+
+
+Console.WriteLine();
+Console.ReadLine();
 
