@@ -99,6 +99,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LinqExamples", "Linq\LinqEx
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VarExamples", "AnonymousTypes\VarExamples\VarExamples.csproj", "{9F259D19-0AF9-4BD3-B724-2CF38F95CF99}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThreadExample", "Threading\ThreadExample\ThreadExample.csproj", "{D7865561-FA44-417D-A187-281F3ADDC145}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThreadPoolExample", "Threading\ThreadPoolExample\ThreadPoolExample.csproj", "{98512D64-70E2-4310-A966-D9A49CBA1707}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -249,6 +253,14 @@ Global
 		{9F259D19-0AF9-4BD3-B724-2CF38F95CF99}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F259D19-0AF9-4BD3-B724-2CF38F95CF99}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F259D19-0AF9-4BD3-B724-2CF38F95CF99}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D7865561-FA44-417D-A187-281F3ADDC145}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D7865561-FA44-417D-A187-281F3ADDC145}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D7865561-FA44-417D-A187-281F3ADDC145}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D7865561-FA44-417D-A187-281F3ADDC145}.Release|Any CPU.Build.0 = Release|Any CPU
+		{98512D64-70E2-4310-A966-D9A49CBA1707}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{98512D64-70E2-4310-A966-D9A49CBA1707}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{98512D64-70E2-4310-A966-D9A49CBA1707}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{98512D64-70E2-4310-A966-D9A49CBA1707}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -290,6 +302,8 @@ Global
 		{FD13D9FC-D232-40D9-8547-916CD8EB5D9B} = {47AA7BD2-C5AB-4212-AC34-A97A9EE81A00}
 		{49289994-61F4-4905-ABD8-7D8C438488C3} = {575741E7-F866-4F13-84D5-5BD3830A28B3}
 		{9F259D19-0AF9-4BD3-B724-2CF38F95CF99} = {95526590-7F4E-4E8F-A1AA-FC29318B0D1C}
+		{D7865561-FA44-417D-A187-281F3ADDC145} = {3B6B2077-5B7B-4FCE-B052-EFB796776B2C}
+		{98512D64-70E2-4310-A966-D9A49CBA1707} = {3B6B2077-5B7B-4FCE-B052-EFB796776B2C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D2E7DE6E-B21A-4995-A942-00FB34E40D6F}
