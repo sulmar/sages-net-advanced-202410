@@ -17,6 +17,8 @@ public class DbCustomerRepository : ICustomerRepository
     public DbCustomerRepository(DbContext context)
     {
         this.context = context;
+
+        Console.WriteLine("DbCustomerRepository Activated.");
     }
 
     public void Add()
@@ -85,6 +87,10 @@ public interface IMessageService
 
 public class EmailMessageService : IMessageService
 {
+    public EmailMessageService()
+    {
+        Console.WriteLine("EmailMessageService Activated.");
+    }
     public void Send(string message)
     {
         Console.WriteLine($"Sending {message} by email...");

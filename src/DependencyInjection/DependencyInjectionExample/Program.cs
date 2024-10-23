@@ -8,9 +8,9 @@ Console.WriteLine("Hello, Dependency Injection!");
 // Tworzymy kontener do wstrzykiwania zależności (Dependency Injection)
 
 var serviceProvider = new ServiceCollection()
-    .AddTransient<IMessageService, EmailMessageService>()
+    .AddSingleton<IMessageService, EmailMessageService>()
     .AddTransient<ICustomerRepository, DbCustomerRepository>()
-    .AddTransient<DbContext>()
+    .AddScoped<DbContext>()
     .AddTransient<CustomersViewModel>()
     .AddTransient<CustomersController>()
     .BuildServiceProvider();
