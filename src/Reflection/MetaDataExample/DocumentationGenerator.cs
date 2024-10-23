@@ -10,46 +10,63 @@ namespace MetaDataExample;
 public class DocumentationBuilder
 {
     private StringBuilder builder = new StringBuilder();
+    private Type type;
 
-    public void GenerateHeader(Type type)
+    public DocumentationBuilder WithType(Type type)
     {
-        builder.AppendLine($"{type.Namespace}, {type.Name}");
+        this.type = type;
+
+        return this;
     }
 
-    public void GenerateProperties(Type type)
+    public DocumentationBuilder GenerateHeader()
     {
-        builder.AppendLine("Właściwości: ");
+        builder.AppendLine($"{type.Namespace}, {type.Name}");
+
+        return this;
+    }
+
+    public DocumentationBuilder GenerateProperties(string message)
+    {
+        builder.AppendLine(message);
         PropertyInfo[] properties = type.GetProperties();
 
         foreach (PropertyInfo property in properties)
         {
             builder.AppendLine($"{property.Name} {property.PropertyType}");
         }
+
+
+        return this;
     }
 
-    public void GenerateMethods(Type type)
+    public DocumentationBuilder GenerateMethods(string message)
     {
-        builder.AppendLine("Metody: ");
+        builder.AppendLine(message);
         MethodInfo[] methods = type.GetMethods();
 
         foreach (MethodInfo method in methods)
         {
             builder.AppendLine($"{method.Name} {method.ReturnType}");
         }
+
+        return this;
     }
 
-    public void GenerateEvents(Type type)
+    public DocumentationBuilder GenerateEvents(string message)
     {
-        builder.AppendLine("Zdarzenia: ");
+        builder.AppendLine(message);
         EventInfo[] events = type.GetEvents();
 
         foreach (EventInfo @event in events)
         {
             builder.AppendLine($"{@event.Name} {@event.EventHandlerType.Name}");
         }
+
+        return this;
     }
 
-    public void GenerateConstructors(Type type)
+    public DocumentationBuilder GenerateConstructors()
     {
         builder.AppendLine("Konstruktory: ");
         ConstructorInfo[] constructors = type.GetConstructors();
@@ -58,6 +75,8 @@ public class DocumentationBuilder
         {
             builder.AppendLine($"{constructor.Name}");
         }
+
+        return this;
     }
 
     public string Build()

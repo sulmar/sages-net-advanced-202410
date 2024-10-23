@@ -14,12 +14,14 @@ internal class Program
         Type type = typeof(Customer);
 
         DocumentationBuilder builder = new DocumentationBuilder();
-        builder.GenerateHeader(type);
-        builder.GenerateProperties(type);
-        builder.GenerateProperties(type);
-        builder.GenerateEvents(type);
-        builder.GenerateConstructors(type);
 
+        builder
+            .WithType(type)
+            .GenerateHeader()
+            .GenerateProperties("Właściwości")
+            .GenerateMethods("Metody")
+            .GenerateEvents("Zdarzenia")
+            .GenerateConstructors();
 
         Console.WriteLine(builder.Build());
 
