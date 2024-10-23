@@ -4,7 +4,15 @@ Console.WriteLine("Hello, Reflection Activator!");
 
 
 BankAccount account = new BankAccount(1000); // Początkowy stan konta 1000
+account.Deposit(100);
+account.Withdraw(50);
+account.Withdraw(200);
+
+
+
 CommandInvoker invoker = new CommandInvoker(account);
+
+
 
 // Wykonanie poleceń
 invoker.ExecuteCommand("Deposit", 100); // Wpłata 100

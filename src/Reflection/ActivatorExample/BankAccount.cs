@@ -26,6 +26,8 @@ public class BankAccount
 
         return false;
     }
+
+    
 }
 
 public class CommandInvoker
@@ -102,5 +104,16 @@ public class WithdrawCommand : ICommand
         {
             Console.WriteLine("Insufficient funds for withdrawal.");
         }
+    }
+}
+
+
+public class Customer
+{
+    public string Email { get; set; }
+
+    public void Send(string message)
+    {
+        Console.WriteLine($"Send {message} to {Email}");
     }
 }
