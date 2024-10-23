@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MetaDataExample;
+namespace MetaDataExample.Models;
 
 public abstract class Base
 {
@@ -16,8 +16,14 @@ public class Customer : Base, INotifyPropertyChanged
 {
     public int Id { get; set; }
     public string Name { get; set; }
+    public DateTime CreatedOn { get; set; }
 
     public event PropertyChangedEventHandler? PropertyChanged;
+
+    private Customer()
+    {
+        
+    }
 
     private bool isRemoved;
 
