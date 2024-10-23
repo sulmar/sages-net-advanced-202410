@@ -99,6 +99,10 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ThreadPoolExample", "Thread
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "TaskExample", "Threading\TaskExample\TaskExample.csproj", "{150D887D-EB61-4009-BD47-D53CC05DCCDF}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Excercises", "Excercises", "{F9E5FB92-A10A-4EDA-B814-713CBDDEFEEB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SensorsConsoleApp", "SensorsConsoleApp\SensorsConsoleApp.csproj", "{4D0A0C21-2A26-425E-9395-67AFB6A86412}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -249,6 +253,10 @@ Global
 		{150D887D-EB61-4009-BD47-D53CC05DCCDF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{150D887D-EB61-4009-BD47-D53CC05DCCDF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{150D887D-EB61-4009-BD47-D53CC05DCCDF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4D0A0C21-2A26-425E-9395-67AFB6A86412}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4D0A0C21-2A26-425E-9395-67AFB6A86412}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4D0A0C21-2A26-425E-9395-67AFB6A86412}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4D0A0C21-2A26-425E-9395-67AFB6A86412}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -290,6 +298,7 @@ Global
 		{D7865561-FA44-417D-A187-281F3ADDC145} = {3B6B2077-5B7B-4FCE-B052-EFB796776B2C}
 		{98512D64-70E2-4310-A966-D9A49CBA1707} = {3B6B2077-5B7B-4FCE-B052-EFB796776B2C}
 		{150D887D-EB61-4009-BD47-D53CC05DCCDF} = {E3844A4A-A013-4A54-9FB3-F13B2B126DD0}
+		{4D0A0C21-2A26-425E-9395-67AFB6A86412} = {F9E5FB92-A10A-4EDA-B814-713CBDDEFEEB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D2E7DE6E-B21A-4995-A942-00FB34E40D6F}
