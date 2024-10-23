@@ -10,6 +10,22 @@ public abstract class Sensor
     }
 }
 
+public abstract class Unit<T>
+{
+    public string Name { get; set; }
+    public T Value { get; set; }
+}
+
+public class Temperature : Unit<double>
+{
+
+}
+
+public class Humidity : Unit<int>
+{
+
+}
+
 public abstract class Sensor<TValue> : Sensor
 {    
     public TValue Value { get; set; }
@@ -22,21 +38,21 @@ public abstract class Sensor<TValue> : Sensor
     }
 }
 
-public class TemperatureSensor : Sensor<double>
+public class TemperatureSensor : Sensor<Temperature>
 {
     public override void UpdateValue()
     {
-        Value = random.NextDouble() * 100;
+         Value = new Temperature { Value = random.NextDouble() * 100, Name = "Celsius" };
 
         base.UpdateValue();
     }  
 }
 
-public class HumiditySensor : Sensor<int>
+public class HumiditySensor : Sensor<Humidity>
 {
     public override void UpdateValue()
     {
-        Value = random.Next(1, 100);
+        Value = new Humidity { Value = random.Next(1, 100), Name = "%" };
 
         base.UpdateValue();
     }
