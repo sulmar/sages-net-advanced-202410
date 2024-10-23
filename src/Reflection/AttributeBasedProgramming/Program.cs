@@ -1,4 +1,6 @@
 ﻿using AttributeBasedProgramming;
+using System.ComponentModel;
+using System.Reflection;
 
 Console.WriteLine("Hello, Attribute!");
 
@@ -10,7 +12,22 @@ CustomerValidator validator = new CustomerValidator();
 
 validator.IsValid(model);
 
+Type type = typeof(Customer);
 
+// Odczyt własnego atrybutu na poziomie klasy
+IconAttribute iconAttribute = (IconAttribute) Attribute.GetCustomAttribute(type, typeof(IconAttribute));
+Console.WriteLine(iconAttribute.Filename);
+
+PropertyInfo[] properties = type.GetProperties();
+
+foreach (PropertyInfo property in properties)
+{
+    // Odczyt własnego atrybutu na poziomie właściwości
+    if (Attribute.IsDefined(property, typeof(IsReadOnlyAttribute)))
+    {
+        Console.WriteLine($"Pole {property.Name} jest wymagane");
+    }
+}
 
 
 // TODO: odczytaj atrybut na poziomie właściwości

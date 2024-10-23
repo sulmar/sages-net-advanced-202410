@@ -6,22 +6,6 @@ using System.Windows.Markup;
 
 namespace AttributeBasedProgramming;
 
-public class Controller<T>
-{
-    public T Model { get; set; }
-
-
-}
-
-public class CustomersController : Controller<Customer>
-{    
-    public void Post()
-    {
-        // this.Model.IsValid
-        // TODO: save to db
-    }
-}
-
 public class CustomerValidator
 {
     public bool IsValid(Customer customer)
@@ -66,6 +50,7 @@ public class Base : INotifyPropertyChanged
 }
 
 [Description("Klient")]
+[Icon("customer.ico")]
 public class Customer : Base
 {
     [Required, MinLength(3, ErrorMessage = "Imię zbyt krótkie")]
@@ -75,7 +60,10 @@ public class Customer : Base
     [DisplayName("Nazwisko")]
     public string LastName { get; set; }
 
-    private string pesel;
+    private string? pesel;
+
+    [IsReadOnly]
+    public DateTime Birthday { get; set; }
 
     [Required]
     public string Pesel
