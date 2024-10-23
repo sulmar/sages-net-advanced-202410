@@ -13,16 +13,16 @@ public class DbCustomerRepository : ICustomerRepository
 {
     private DbContext context;
 
-    public DbCustomerRepository()
+
+    public DbCustomerRepository(DbContext context)
     {
-        context = new DbContext();
+        this.context = context;
     }
 
     public void Add()
     {
-        throw new NotImplementedException();
+        
     }
-
 }
 
 public class DbContext
