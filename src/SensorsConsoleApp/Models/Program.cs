@@ -1,4 +1,6 @@
 ﻿using SensorsConsoleApp;
+using SensorsConsoleApp.Models;
+using SensorsConsoleApp.Models.Sensors;
 
 Console.WriteLine("Hello, Excercise 1!");
 
