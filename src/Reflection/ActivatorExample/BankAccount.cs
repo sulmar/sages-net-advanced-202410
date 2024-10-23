@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System.Reflection;
+using System.Windows.Input;
 
 namespace ActivatorExample;
 
@@ -27,7 +28,7 @@ public class BankAccount
         return false;
     }
 
-    
+
 }
 
 public class CommandInvoker
@@ -43,20 +44,24 @@ public class CommandInvoker
     {
         ICommand command = null;
 
-        if (commandName == "Deposit")
+        string classname = $"ActivatorExample.{commandName}Command";
+
+        Type type = Assembly.GetExecutingAssembly().GetType(classname);
+
+        if (type != null)
         {
-            command = new DepositCommand(_account, amount);
-            command.Execute();
+            object[] args = { _account, amount };
+
+            command = Activator.CreateInstance(type, args) as ICommand; // Utworzenie instancji obiektu (new "WithCommand")
+
+            command?.Execute();
+
         }
-        else if (commandName == "Withdraw")
-        {
-            command = new DepositCommand(_account, amount);
-            command.Execute();
-        }        
         else
         {
             Console.WriteLine($"Command '{commandName}' not found.");
         }
+
     }
 }
 

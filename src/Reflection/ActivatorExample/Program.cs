@@ -33,18 +33,25 @@ foreach (string message in messages)
 
 
 BankAccount account = new BankAccount(1000); // Początkowy stan konta 1000
-account.Deposit(100);
-account.Withdraw(50);
-account.Withdraw(200);
+
+//account.Deposit(100);
+//account.Withdraw(50);
+//account.Withdraw(200);
 
 
 
 CommandInvoker invoker = new CommandInvoker(account);
 
+List<Transfer> transfers = [
+    new Transfer("Deposit", 100), // Wpłata 100
+    new Transfer("Withdraw", 50), // Wypłata 50
+    new Transfer("Withdraw", 200), // Wypłata 200
+    new Transfer("NonExistent", 100), // To powinno zwrócić błąd
+];
 
+foreach (var transfer in transfers)
+{
+    // Wykonanie polecenia
+    invoker.ExecuteCommand(transfer.Operation, transfer.Amount);
+}
 
-// Wykonanie poleceń
-invoker.ExecuteCommand("Deposit", 100); // Wpłata 100
-invoker.ExecuteCommand("Withdraw", 50);  // Wypłata 50
-invoker.ExecuteCommand("Withdraw", 200); // Wypłata 200
-invoker.ExecuteCommand("NonExistent", 100); // To powinno zwrócić błąd
