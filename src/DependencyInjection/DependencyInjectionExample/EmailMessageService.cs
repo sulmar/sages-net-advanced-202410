@@ -35,12 +35,12 @@ public class DbContext
 public class CustomersViewModel
 {
     private ICustomerRepository customerRepository;
-    private IMessageService messageService;
+    private IMessageService[] messageService;
     
-    public CustomersViewModel(ICustomerRepository customerRepository, IMessageService messageService)
+    public CustomersViewModel(ICustomerRepository customerRepository, IEnumerable<IMessageService> messageService)
     {        
         this.customerRepository = customerRepository;
-        this.messageService = messageService;
+        this.messageService = messageService.ToArray();
     }
     
     public string Message { get; set; }
@@ -48,12 +48,13 @@ public class CustomersViewModel
     public void Add()
     {
         customerRepository.Add();
-        messageService.Send(Message);
+
+        foreach (var service in messageService)
+            service.Send(Message);
     }
 
     public void Update()
     {
-        messageService.Send(Message);
     }
 }
 
