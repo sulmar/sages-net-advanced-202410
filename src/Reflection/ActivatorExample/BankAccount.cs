@@ -70,6 +70,7 @@ public interface ICommand
     void Execute();
 }
 
+// TODO: Dodaj atrybut [Command("Wplata")]
 public class DepositCommand : ICommand
 {
     private readonly BankAccount _account;
