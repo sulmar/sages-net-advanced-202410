@@ -17,3 +17,9 @@ public class IsReadOnlyAttribute : Attribute
 {
 
 }
+
+[AttributeUsage(AttributeTargets.Method)]
+public class TimeAttribute : Attribute
+{
+
+}
