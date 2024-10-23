@@ -3,6 +3,10 @@ using System.Reflection;
 
 Console.WriteLine("Hello, Reflection!");
 
+Configuration configuration  = new Configuration {  Parameter1 = 1, Parameter2 = "a", Parameter3 = DateTime.Now, Parameter4 = 0.5f };
+ConfigurationProvider provider = new ConfigurationProvider();
+provider.Save(configuration);
+
 Customer customer = new Customer { Name = "John Doe", Email = "john.doe@example.com" };
 
 

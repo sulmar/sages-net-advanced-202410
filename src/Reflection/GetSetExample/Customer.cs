@@ -2,6 +2,16 @@
 
 namespace GetSetExample;
 
+
+
+public class Configuration
+{
+    public int Parameter1 { get; set; }
+    public string Parameter2 { get; set; }
+    public DateTime Parameter3 { get; set; }
+    public float Parameter4 { get; set; }
+}
+
 public class Customer
 {    
     public string Name { get; set; }
