@@ -7,56 +7,63 @@ using System.Threading.Tasks;
 
 namespace MetaDataExample;
 
-public class DocumentationGenerator
+public class DocumentationBuilder
 {
+    private StringBuilder builder = new StringBuilder();
+
     public void GenerateHeader(Type type)
     {
-        Console.WriteLine($"{type.Namespace}, {type.Name}");
+        builder.AppendLine($"{type.Namespace}, {type.Name}");
     }
 
     public void GenerateProperties(Type type)
     {
-        Console.WriteLine("Właściwości: ");
+        builder.AppendLine("Właściwości: ");
         PropertyInfo[] properties = type.GetProperties();
 
         foreach (PropertyInfo property in properties)
         {
-            Console.WriteLine($"{property.Name} {property.PropertyType}");
+            builder.AppendLine($"{property.Name} {property.PropertyType}");
         }
     }
 
     public void GenerateMethods(Type type)
     {
-        Console.WriteLine("Metody: ");
+        builder.AppendLine("Metody: ");
         MethodInfo[] methods = type.GetMethods();
 
         foreach (MethodInfo method in methods)
         {
-            Console.WriteLine($"{method.Name} {method.ReturnType}");
+            builder.AppendLine($"{method.Name} {method.ReturnType}");
         }
     }
 
     public void GenerateEvents(Type type)
     {
-        Console.WriteLine("Zdarzenia: ");
+        builder.AppendLine("Zdarzenia: ");
         EventInfo[] events = type.GetEvents();
 
         foreach (EventInfo @event in events)
         {
-            Console.WriteLine($"{@event.Name} {@event.EventHandlerType.Name}");
+            builder.AppendLine($"{@event.Name} {@event.EventHandlerType.Name}");
         }
     }
 
     public void GenerateConstructors(Type type)
     {
-        Console.WriteLine("Konstruktory: ");
+        builder.AppendLine("Konstruktory: ");
         ConstructorInfo[] constructors = type.GetConstructors();
 
         foreach (ConstructorInfo constructor in constructors)
         {
-            Console.WriteLine($"{constructor.Name}");
+            builder.AppendLine($"{constructor.Name}");
         }
     }
 
-
+    public string Build()
+    {
+        return builder.ToString();
     }
+
+
+}

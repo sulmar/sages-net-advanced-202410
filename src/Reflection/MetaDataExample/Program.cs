@@ -13,13 +13,15 @@ internal class Program
         // Pobieramy typ jako obiekt
         Type type = typeof(Customer);
 
-        DocumentationGenerator generator = new DocumentationGenerator();
+        DocumentationBuilder builder = new DocumentationBuilder();
+        builder.GenerateHeader(type);
+        builder.GenerateProperties(type);
+        builder.GenerateProperties(type);
+        builder.GenerateEvents(type);
+        builder.GenerateConstructors(type);
 
-        generator.GenerateHeader(type);
-        generator.GenerateProperties(type);
-        generator.GenerateProperties(type);
-        generator.GenerateEvents(type);
-        generator.GenerateConstructors(type);
+
+        Console.WriteLine(builder.Build());
 
     }
 }
