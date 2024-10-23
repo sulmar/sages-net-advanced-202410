@@ -1,5 +1,4 @@
-﻿using System.Net.NetworkInformation;
-using System.Reflection;
+﻿using System.Reflection;
 
 namespace GetSetExample;
 
@@ -38,6 +37,33 @@ public class Customer
             Type type = this.GetType();
 
             PropertyInfo property = type.GetProperty(propertyName);
+
+            property.SetValue(this, value);
+        }
+    }
+
+    public object this[int index]
+    {
+        get
+        {
+            Type type = this.GetType();
+
+            PropertyInfo[] properties = type.GetProperties();
+
+            PropertyInfo property =  properties[index];
+
+            object value = property.GetValue(this);
+
+            return value;
+        }
+
+        set
+        {
+            Type type = this.GetType();
+
+            PropertyInfo[] properties = type.GetProperties();
+
+            PropertyInfo property = properties[index];
 
             property.SetValue(this, value);
         }

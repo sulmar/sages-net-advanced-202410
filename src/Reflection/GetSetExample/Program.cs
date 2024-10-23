@@ -29,7 +29,9 @@ property.SetValue(customer, "John Smith");
 
 Console.WriteLine(customer);
 
-customer[propertyName] = "Marcin";
+customer[1] = "marcin.sulecki@sulmar.pl";
+
+
 
 Console.WriteLine(customer[propertyName]);
 
