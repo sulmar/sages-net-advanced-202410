@@ -4,9 +4,9 @@ using ThreadExample;
 
 Console.WriteLine("Hello, Thread!");
 
-SendEmailTest();
+ SendEmailTest();
 
-DownoadTest();
+// DownloadTest();
 
 static void Download(string url)
 {
@@ -21,7 +21,7 @@ static void Download(string url)
     }
 }
 
-static void DownoadTest()
+static void DownloadTest()
 {
     const string defaultUri = "https://picsum.photos/800/600";
     const int count = 100;
@@ -46,5 +46,18 @@ static void DownoadTest()
 static void SendEmailTest()
 {
     EmailMessageService messageService = new EmailMessageService();
-    messageService.SendToMe();
+    
+    "Started".DumpThreadId();
+
+    Stopwatch stopwatch = Stopwatch.StartNew();
+
+    for (int i = 0; i < 100; i++)
+    {
+        Thread sendThread = new Thread(() => messageService.SendToMe()); // Utworzenie wątku
+        sendThread.Start();
+    }
+
+    stopwatch.Stop();
+
+    $"Sent all. Elapsed time: {stopwatch.Elapsed}".DumpThreadId();    
 }
