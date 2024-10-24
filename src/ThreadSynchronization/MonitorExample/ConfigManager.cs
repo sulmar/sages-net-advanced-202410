@@ -9,17 +9,31 @@ internal class ConfigManager
 
     }
 
+    private static readonly object lockObject = new object();
+
     private static ConfigManager instance;
 
     public static ConfigManager Instance
     {
         get
-        {
-            if (instance == null)
-            {
-                Thread.Sleep(2000);
+        {       // <---- t2
 
-                instance = new();
+            Monitor.Enter(lockObject);
+
+            try
+            {
+
+                if (instance == null) // <--- t1
+                {
+                    Thread.Sleep(200);
+
+                    instance = new();
+                }
+            }
+
+            finally
+            {
+                Monitor.Exit(lockObject);
             }
 
 
