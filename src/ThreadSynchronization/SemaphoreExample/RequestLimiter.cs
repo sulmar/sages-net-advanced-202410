@@ -1,19 +1,19 @@
-﻿namespace SemaphoreSlimExample;
+﻿namespace SemaphoreExample;
 
 internal class RequestLimiter
 {
-    private readonly SemaphoreSlim _semaphore;
+    private readonly Semaphore _semaphore;
 
     public RequestLimiter(int maxConcurrentRequests)
     {
-        _semaphore = new SemaphoreSlim(maxConcurrentRequests, maxConcurrentRequests);
+        _semaphore = new Semaphore(maxConcurrentRequests, maxConcurrentRequests);
     }
 
-    public async Task ProcessRequest(int requestId)
+    public void ProcessRequest(int requestId)
     {
         Console.WriteLine($"Request {requestId} is waiting to be processed.");
 
-        await _semaphore.WaitAsync();
+        _semaphore.WaitOne();
 
         try
         {
