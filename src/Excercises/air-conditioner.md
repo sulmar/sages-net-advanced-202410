@@ -55,24 +55,11 @@ Obecna implementacja wygląda następująco:
             Console.WriteLine("Wentylator wyłączony.");
         }
     }
+   
 ```
 
 ## Zadanie
 Dodaj sterowanie wentylatorem, który powinien zostać **wyłączony** gdy temperatura przekroczy zadany poziom. 
+W przyszłości mogą pojawić się pojawić kolejne elementy wykonawcze.
 
-```cs
-// Klasa wentylatora
-public class Fan
-{
-    public void TurnOn()
-    {
-        Console.WriteLine("Wentylator włączony.");
-    }
 
-    public void TurnOff()
-    {
-        Console.WriteLine("Wentylator wyłączony.");
-    }
-}
-
-```
