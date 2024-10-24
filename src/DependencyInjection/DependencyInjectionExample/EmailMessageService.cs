@@ -34,8 +34,8 @@ public class DbContext
 
 public class CustomersViewModel
 {
-    private ICustomerRepository customerRepository;
-    private IMessageService[] messageService;
+    private readonly ICustomerRepository customerRepository;
+    private readonly IMessageService[] messageService;
     
     public CustomersViewModel(ICustomerRepository customerRepository, IEnumerable<IMessageService> messageService)
     {        

@@ -14,12 +14,21 @@ public class TemperatureSensor
     public LimitTemperatureDelegate HighTemperature { get; set; }
     public LimitTemperatureDelegate LowTemperature { get; set; }
 
+    public const double LimitTemperature = 25;
+
+    public readonly DateTime StartedDate;
+
+    public TemperatureSensor()
+    {
+        StartedDate = DateTime.Now;
+    }
+
     // Metoda symulująca odczyt z czujnika
     public void ReadTemperature(double temperature)
     {
         Console.WriteLine($"Odczytana temperatura: {temperature}°C");
 
-        if (temperature > 25)       // Magic Number
+        if (temperature > LimitTemperature)       // Magic Number
         {
             HighTemperature?.Invoke(temperature);         
         }
