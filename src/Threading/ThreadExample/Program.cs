@@ -4,25 +4,9 @@ using ThreadExample;
 
 Console.WriteLine("Hello, Thread!");
 
-const string defaultUri = "https://picsum.photos/800/600";
-const int count = 100;
+SendEmailTest();
 
-// Wygenerowanie listy adresów url
-string[] urls = Enumerable.Range(0, count).Select(_ => defaultUri).ToArray();
-
-Stopwatch stopwatch = Stopwatch.StartNew();
-
-foreach (string url in urls)
-{
-    Download(url);
-}
-
-stopwatch.Stop();
-
-Console.WriteLine("All downloads completed.");
-
-Console.WriteLine($"Time elapsed: {stopwatch.Elapsed}");
-
+DownoadTest();
 
 static void Download(string url)
 {
@@ -35,4 +19,32 @@ static void Download(string url)
 
         $"Downoladed. {url}".DumpThreadId();
     }
+}
+
+static void DownoadTest()
+{
+    const string defaultUri = "https://picsum.photos/800/600";
+    const int count = 100;
+
+    // Wygenerowanie listy adresów url
+    string[] urls = Enumerable.Range(0, count).Select(_ => defaultUri).ToArray();
+
+    Stopwatch stopwatch = Stopwatch.StartNew();
+
+    foreach (string url in urls)
+    {
+        Download(url);
+    }
+
+    stopwatch.Stop();
+
+    Console.WriteLine("All downloads completed.");
+
+    Console.WriteLine($"Time elapsed: {stopwatch.Elapsed}");
+}
+
+static void SendEmailTest()
+{
+    EmailMessageService messageService = new EmailMessageService();
+    messageService.SendToMe();
 }
