@@ -15,7 +15,10 @@ Stopwatch stopwatch = Stopwatch.StartNew();
 
 foreach (string url in urls)
 {
-    Download(url);
+    // Thread sendThread = new Thread(()=> Download(url));
+    // sendThread.Start();
+
+    ThreadPool.QueueUserWorkItem<string>(Download, url, false);
 }
 
 stopwatch.Stop();
@@ -24,6 +27,8 @@ Console.WriteLine("All downloads completed.");
 
 Console.WriteLine($"Time elapsed: {stopwatch.Elapsed}");
 
+Console.WriteLine("Press any key to exit.");
+Console.ReadKey();
 
 static void Download(string url)
 {
@@ -37,3 +42,4 @@ static void Download(string url)
         $"Downoladed. {url}".DumpThreadId();
     }
 }
+

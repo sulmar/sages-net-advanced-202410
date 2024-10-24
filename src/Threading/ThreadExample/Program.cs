@@ -46,15 +46,17 @@ static void DownloadTest()
 static void SendEmailTest()
 {
     EmailMessageService messageService = new EmailMessageService();
-    
+
     "Started".DumpThreadId();
 
     Stopwatch stopwatch = Stopwatch.StartNew();
 
-    for (int i = 0; i < 100; i++)
+    IEnumerable<Thread> threads = Enumerable.Range(1, 100)
+        .Select(_ => new Thread(() => messageService.SendTo("john.smith@domain.com")));
+
+    foreach (Thread thread in threads)
     {
-        Thread sendThread = new Thread(() => messageService.SendToMe()); // Utworzenie wątku
-        sendThread.Start();
+        thread.Start();        
     }
 
     stopwatch.Stop();
