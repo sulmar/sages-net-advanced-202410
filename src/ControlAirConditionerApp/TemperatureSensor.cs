@@ -1,17 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace ControlAirConditionerApp;
 
-namespace ControlAirConditionerApp;
+public class TemperatureEventArgs : EventArgs
+{
+    public double Temperature { get; }
+
+    public TemperatureEventArgs(double temperature)
+    {
+        Temperature = temperature;
+    }
+}
 
 // Klasa czujnika temperatury
 public class TemperatureSensor
-{    
-    
-    public Action<double> HighTemperature { get; set; }
-    public Action<double> LowTemperature { get; set; }
+{
+    public event EventHandler<TemperatureEventArgs> HighTemperature;
+    public event EventHandler<TemperatureEventArgs> LowTemperature;
 
     public const double LimitTemperature = 25;
 
@@ -27,13 +30,13 @@ public class TemperatureSensor
     {
         Console.WriteLine($"Odczytana temperatura: {temperature}°C");
 
-        if (temperature > LimitTemperature)       // Magic Number
+        if (temperature > LimitTemperature)       
         {
-            HighTemperature?.Invoke(temperature);         
+            HighTemperature?.Invoke(this, new TemperatureEventArgs(temperature));         
         }
         else
         {
-            LowTemperature?.Invoke(temperature);
+            LowTemperature?.Invoke(this, new TemperatureEventArgs(temperature));
         }
     }
 }

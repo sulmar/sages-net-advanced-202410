@@ -4,20 +4,22 @@ Console.WriteLine("Hello, World!");
 
 TemperatureSensor temperatureSensor = new TemperatureSensor();
 temperatureSensor.HighTemperature += OnHighTemperature;
-temperatureSensor.HighTemperature += (temperature) =>
+temperatureSensor.HighTemperature += (sender, args) =>
 {
     Fan fan = new Fan();
     fan.TurnOff();
 };
 
 temperatureSensor.LowTemperature += OnLowTemperature;
-temperatureSensor.LowTemperature += (temperature) =>
+temperatureSensor.LowTemperature += (sender, args) =>
 {
     Fan fan1 = new Fan();
     fan1.TurnOn();
 };
 
-temperatureSensor.LowTemperature += (_) => Console.Write("Nagrzewnica");
+
+
+temperatureSensor.LowTemperature += (sender, args) => Console.Write("Nagrzewnica");
 
 while (true)
 {
@@ -29,14 +31,14 @@ while (true)
 }
 
 
-static void OnHighTemperature(double temperature)
-{
+static void OnHighTemperature(object sender, TemperatureEventArgs args)
+{    
     AirConditioner ac = new AirConditioner();    
 
     ac.TurnOn();
 }
 
-static void OnLowTemperature(double temperature)
+static void OnLowTemperature(object sender, TemperatureEventArgs args)
 {
     AirConditioner ac = new AirConditioner();
 
