@@ -14,3 +14,7 @@ To take this course you'll need the following.
 ```
 git clone https://github.com/sulmar/sages-net-advanced-202410
 ```
+
+## Roadmap
+
+![Roadmap](drafts/csharp-advanced-roadmap.png)
