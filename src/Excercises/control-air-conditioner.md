@@ -1,7 +1,7 @@
 # Sterowanie klimatyzatorem
 
 ## Opis
-Tworzymy rozwiązanie do monitorowania temperatury w pomieszczeniu, które automatycznie włącza klimatyzator, gdy temperatura przekroczy zadany poziom.
+Tworzymy rozwiązanie _ControlAirConditioner_ do monitorowania temperatury w pomieszczeniu, które automatycznie włącza klimatyzator, gdy temperatura przekroczy zadany poziom.
 
 Obecna implementacja wygląda następująco:
 
