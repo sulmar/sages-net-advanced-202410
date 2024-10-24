@@ -17,9 +17,13 @@ internal class LoadBalancer
 
 
             Dump("checking _instance...");
-            if (_instance == null)  // <-- t1
+
+            lock (lockObject)
             {
-                _instance = new LoadBalancer(); // <------------ t1
+                if (_instance == null)  // <-- t1
+                {
+                    _instance = new LoadBalancer(); // <------------ t1
+                }
             }
 
             Dump("exit.");
