@@ -107,6 +107,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DependencyInjection", "Depe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DependencyInjectionExample", "DependencyInjection\DependencyInjectionExample\DependencyInjectionExample.csproj", "{6494A155-BC67-498E-8142-7D236DCF1884}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ControlAirConditionerApp", "ControlAirConditionerApp\ControlAirConditionerApp.csproj", "{271F34C3-E42D-43B9-840F-FF8D62F956E2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -265,6 +267,10 @@ Global
 		{6494A155-BC67-498E-8142-7D236DCF1884}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6494A155-BC67-498E-8142-7D236DCF1884}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6494A155-BC67-498E-8142-7D236DCF1884}.Release|Any CPU.Build.0 = Release|Any CPU
+		{271F34C3-E42D-43B9-840F-FF8D62F956E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{271F34C3-E42D-43B9-840F-FF8D62F956E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{271F34C3-E42D-43B9-840F-FF8D62F956E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{271F34C3-E42D-43B9-840F-FF8D62F956E2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -308,6 +314,7 @@ Global
 		{150D887D-EB61-4009-BD47-D53CC05DCCDF} = {E3844A4A-A013-4A54-9FB3-F13B2B126DD0}
 		{4D0A0C21-2A26-425E-9395-67AFB6A86412} = {F9E5FB92-A10A-4EDA-B814-713CBDDEFEEB}
 		{6494A155-BC67-498E-8142-7D236DCF1884} = {08D65C29-A6F8-4F86-97D6-1B23A040A373}
+		{271F34C3-E42D-43B9-840F-FF8D62F956E2} = {F9E5FB92-A10A-4EDA-B814-713CBDDEFEEB}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D2E7DE6E-B21A-4995-A942-00FB34E40D6F}
