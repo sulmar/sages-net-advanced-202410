@@ -6,14 +6,29 @@ Console.WriteLine("Hello, Tasks!");
 // SendContinueWithTest();
 // VoteTest();
 
-TaskWithResultTest();
+// TaskWithResultTest();
+
+ SecondTicker();
+
 
 Console.WriteLine("Press any to exit.");
 Console.ReadKey();
 
 
 
+static async Task SecondTicker()
+{
+    int secs = 0;
 
+    PeriodicTimer secondTimer = new PeriodicTimer(new TimeSpan(0, 0, 1));
+
+    while (await secondTimer.WaitForNextTickAsync())
+    {
+        secs++;
+        Console.SetCursorPosition(0, 2);
+        Console.Write($"secs: {secs.ToString("00")}");
+    }
+}
 
 void SendTest()
 {
