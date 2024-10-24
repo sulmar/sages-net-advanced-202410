@@ -8,11 +8,10 @@ namespace ControlAirConditionerApp;
 
 // Klasa czujnika temperatury
 public class TemperatureSensor
-{
-    public delegate void LimitTemperatureDelegate(double temperature);
+{    
     
-    public LimitTemperatureDelegate HighTemperature { get; set; }
-    public LimitTemperatureDelegate LowTemperature { get; set; }
+    public Action<double> HighTemperature { get; set; }
+    public Action<double> LowTemperature { get; set; }
 
     public const double LimitTemperature = 25;
 

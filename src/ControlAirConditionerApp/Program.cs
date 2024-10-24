@@ -13,9 +13,11 @@ temperatureSensor.HighTemperature += (temperature) =>
 temperatureSensor.LowTemperature += OnLowTemperature;
 temperatureSensor.LowTemperature += (temperature) =>
 {
-    Fan fan = new Fan();
-    fan.TurnOn();
+    Fan fan1 = new Fan();
+    fan1.TurnOn();
 };
+
+temperatureSensor.LowTemperature += (_) => Console.Write("Nagrzewnica");
 
 while (true)
 {
