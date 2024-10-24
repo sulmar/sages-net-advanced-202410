@@ -35,6 +35,21 @@ void SendTest()
 
 // TaskWithResultTest();
 
+static void SyncCalculatorTest()
+{
+    Console.WriteLine("Starting payroll calculation...");
+
+    decimal hourlyRate = 50m;
+    int hoursWorked = 160;
+
+    SalaryCalculator calculator = new SalaryCalculator();
+
+    decimal salary = calculator.CalculateGrossSalary(hourlyRate, hoursWorked);
+    decimal tax = calculator.CalculateTax(salary);
+    Console.WriteLine($"Tax: {tax:C}");
+
+}
+
 static void TaskWithResultTest()
 {
     Console.WriteLine("Starting payroll calculation...");
@@ -44,10 +59,12 @@ static void TaskWithResultTest()
 
     SalaryCalculator calculator = new SalaryCalculator();
 
-    Task.Run(()=> calculator.CalculateGrossSalary(hourlyRate, hoursWorked))
+   Task.Run(()=> calculator.CalculateGrossSalary(hourlyRate, hoursWorked))
         .ContinueWith(t => Task.Run(() => calculator.CalculateTax(t.Result)))
             .ContinueWith(t => Console.WriteLine($"Tax: {t.Result:C}"));    
 }
+
+
 
 static void SendContinueWithTest()
 {
