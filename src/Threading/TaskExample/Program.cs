@@ -47,10 +47,9 @@ static void SyncCalculatorTest()
     decimal salary = calculator.CalculateGrossSalary(hourlyRate, hoursWorked);
     decimal tax = calculator.CalculateTax(salary);
     Console.WriteLine($"Tax: {tax:C}");
-
 }
 
-static void TaskWithResultTest()
+static async void TaskWithResultTest()
 {
     Console.WriteLine("Starting payroll calculation...");
 
@@ -59,9 +58,9 @@ static void TaskWithResultTest()
 
     SalaryCalculator calculator = new SalaryCalculator();
 
-   Task.Run(()=> calculator.CalculateGrossSalary(hourlyRate, hoursWorked))
-        .ContinueWith(t => Task.Run(() => calculator.CalculateTax(t.Result)))
-            .ContinueWith(t => Console.WriteLine($"Tax: {t.Result:C}"));    
+    decimal salary = await calculator.CalculateGrossSalaryAsync(hourlyRate, hoursWorked);
+    decimal tax = await calculator.CalculateTaxAsync(salary);
+    Console.WriteLine($"Tax: {tax:C}");    
 }
 
 
@@ -75,7 +74,7 @@ static void SendContinueWithTest()
             .ContinueWith(t => messageService.SendTo("bob@domain.com"));
 }
 
-static void VoteTest()
+static async void VoteTest()
 {
     VoteService voteService = new VoteService();
     EmailMessageService emailMessageService = new EmailMessageService();
@@ -90,6 +89,14 @@ static void VoteTest()
     // dobra praktyka
     task1
         .ContinueWith(t => emailMessageService.SendTo($"vote@domain.com Result = {t.Result} "));
+
+
+    await Task.WhenAll(tasks);
+
+    foreach (var result in tasks)
+    {
+        emailMessageService.SendTo($"vote@domain.com Result = {result} ");
+    }
 
     //Task.WhenAll(tasks)
     //    .ContinueWith(tasks =>

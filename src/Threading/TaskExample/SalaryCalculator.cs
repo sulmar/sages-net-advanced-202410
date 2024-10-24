@@ -2,6 +2,19 @@
 
 public class SalaryCalculator
 {
+    // Metoda asynchroniczna
+    public Task<decimal> CalculateGrossSalaryAsync(decimal hourlyRate, int hoursWorked)
+    {
+        return Task.Run(() => CalculateGrossSalary(hourlyRate, hoursWorked));
+    }
+
+    // Metoda asynchroniczna
+    public Task<decimal> CalculateTaxAsync(decimal grossSalary)
+    {
+        return Task.Run(() => CalculateTax(grossSalary));
+    }
+
+    // Metoda synchroniczna
     public decimal CalculateGrossSalary(decimal hourlyRate, int hoursWorked)
     {
         Console.WriteLine("Calculating gross salary...");
@@ -11,6 +24,9 @@ public class SalaryCalculator
         return grossSalary;
     }
 
+    
+
+    // Metoda synchroniczna
     public decimal CalculateTax(decimal grossSalary)
     {
         Console.WriteLine("Calculating tax...");
