@@ -1,20 +1,50 @@
-﻿using System.Net.Http.Headers;
-using TaskExample;
+﻿using TaskExample;
 
 Console.WriteLine("Hello, Tasks!");
+
+// CancelationTokenSourceTest();
+
 
 // SendContinueWithTest();
 // VoteTest();
 
-// TaskWithResultTest();
+try
+{
+    TaskWithResultTest();
+}
+catch(OperationCanceledException e)
+{
+    Console.WriteLine("Operacja anulowana.");
+}
 
- SecondTicker();
+// SecondTicker();
 
 
-Console.WriteLine("Press any to exit.");
-Console.ReadKey();
+Console.WriteLine("Press Enter to exit.");
+Console.ReadLine();
 
 
+static void DoWork(CancellationToken token)
+{
+    while (true)
+    {
+        if (token.IsCancellationRequested)
+        {
+            break;
+        }
+
+        //if (token.IsCancellationRequested)
+        //{
+        //    throw new OperationCanceledException();
+        //}
+
+        // token.ThrowIfCancellationRequested();
+
+        Console.Write(".");
+
+        Thread.Sleep(1000);
+    }
+}
 
 static async Task SecondTicker()
 {
@@ -71,11 +101,23 @@ static async void TaskWithResultTest()
     decimal hourlyRate = 50m;
     int hoursWorked = 160;
 
+    CancellationTokenSource cts = new CancellationTokenSource();
+    CancellationToken token = cts.Token;
+
+    cts.CancelAfter(TimeSpan.FromSeconds(20));
+
+    IProgress<string> consoleProgress = new DelegateProgress<string>(message => Console.WriteLine(message));
+
+    // IProgress<string> consoleProgress = new ColorConsoleProgress();
+
+
+
+
     SalaryCalculator calculator = new SalaryCalculator();
 
-    decimal salary = await calculator.CalculateGrossSalaryAsync(hourlyRate, hoursWorked);
-    decimal tax = await calculator.CalculateTaxAsync(salary);
-    Console.WriteLine($"Tax: {tax:C}");    
+    decimal salary = await calculator.CalculateGrossSalaryAsync(hourlyRate, hoursWorked, token, consoleProgress);
+    decimal tax = await calculator.CalculateTaxAsync(salary, token, consoleProgress);
+    Console.WriteLine($"Tax: {tax:C}");
 }
 
 
@@ -121,4 +163,20 @@ static async void VoteTest()
     //            emailMessageService.SendTo($"vote@domain.com Result = {result} ");
     //        }
     //    });
+}
+
+static void CancelationTokenSourceTest()
+{
+    CancellationTokenSource cancellationTokenSource = new CancellationTokenSource();
+
+    cancellationTokenSource.CancelAfter(TimeSpan.FromSeconds(5));
+
+    CancellationToken token = cancellationTokenSource.Token;
+
+    Task.Run(() => DoWork(token));
+
+    Console.WriteLine("Press any to cancel.");
+    Console.ReadKey();
+
+    cancellationTokenSource.Cancel();
 }
